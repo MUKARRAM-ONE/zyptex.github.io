@@ -1,62 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zyptex - Coming Soon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        .container {
-            padding: 40px;
-        }
-        img {
-            max-width: 400px;
-            width: 100%;
-            height: auto;
-            margin-top: 50px;
-        }
-        h1 {
-            font-size: 2em;
-            margin-top: 20px;
-        }
-        p {
-            color: #555;
-            font-size: 1.2em;
-        }
-        .contact {
-            margin-top: 30px;
-            font-size: 1em;
-        }
-        .contact a {
-            display: inline-block;
-            margin: 10px;
-            color: #0077b5;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .contact a:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <img src="coming-soon.png" alt="Coming Soon">
-        <h1>Hang tight... Good things are coming!</h1>
-        <p>We are working hard to bring you something amazing.</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyptex | Coming Soon</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        <div class="contact">
-            <p>Contact Us:</p>
-            <a href="mailto:zyptex.com@gmail.com">📧 zyptex.com@gmail.com</a>
-            <a href="https://www.linkedin.com/company/zyptex/" target="_blank">🔗 LinkedIn</a>
-        </div>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #3b82f6, #8b5cf6, #ec4899);
+      background-size: 600% 600%;
+      animation: gradientShift 12s ease infinite;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 1rem;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+  </style>
+</head>
+<body class="flex items-center justify-center min-h-screen text-white px-4">
+  <div class="glass max-w-3xl w-full text-center">
+    
+    <!-- Logo Animation -->
+    <div class="floating mb-6">
+      <i class="fas fa-laptop-code text-6xl text-white drop-shadow-lg"></i>
     </div>
+
+    <!-- Heading -->
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Zyptex is Coming Soon 🚀</h1>
+    <p class="text-lg md:text-xl text-gray-200 mb-10">
+      We're crafting innovative solutions to transform your digital experience. Stay tuned!
+    </p>
+
+    <!-- Countdown -->
+    <div class="flex justify-center space-x-4 mb-10">
+      <div class="bg-white/10 px-4 py-3 rounded-lg shadow-lg">
+        <div class="text-3xl font-bold" id="days">00</div>
+        <div class="text-sm">Days</div>
+      </div>
+      <div class="bg-white/10 px-4 py-3 rounded-lg shadow-lg">
+        <div class="text-3xl font-bold" id="hours">00</div>
+        <div class="text-sm">Hours</div>
+      </div>
+      <div class="bg-white/10 px-4 py-3 rounded-lg shadow-lg">
+        <div class="text-3xl font-bold" id="minutes">00</div>
+        <div class="text-sm">Minutes</div>
+      </div>
+      <div class="bg-white/10 px-4 py-3 rounded-lg shadow-lg">
+        <div class="text-3xl font-bold" id="seconds">00</div>
+        <div class="text-sm">Seconds</div>
+      </div>
+    </div>
+
+    <!-- Email Form -->
+    <div class="flex justify-center mb-8">
+      <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded-l-lg border-0 focus:ring-2 focus:ring-pink-500 text-gray-800 w-64">
+      <button id="subscribeBtn" class="bg-pink-600 hover:bg-pink-700 px-6 py-2 rounded-r-lg font-semibold">Notify Me</button>
+    </div>
+
+    <!-- Social Links -->
+    <div class="flex justify-center space-x-6 text-2xl">
+      <a href="mailto:zyptex.com@gmail.com" class="hover:text-red-400 transition"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/company/zyptex/" target="_blank" class="hover:text-blue-400 transition"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </div>
+
+  <script>
+    // Countdown Logic
+    const launchDate = new Date();
+    launchDate.setDate(launchDate.getDate() + 14);
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+      document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+      document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+      document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+    }, 1000);
+
+    // Email subscription (FormSubmit API - no backend needed)
+    document.getElementById("subscribeBtn").addEventListener("click", function() {
+      const email = document.querySelector("input[type='email']").value;
+      if (email && email.includes("@")) {
+        window.location.href = `https://formsubmit.co/zyptex.com@gmail.com`;
+      } else {
+        alert("Please enter a valid email address.");
+      }
+    });
+  </script>
 </body>
 </html>
